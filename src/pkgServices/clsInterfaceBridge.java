@@ -51,7 +51,11 @@ public class clsInterfaceBridge {
         return true;
     }
     
-    public Boolean opLoginUser(String prmNickName, String prmPassword){
-        return clsSecurityUtils.opCheckPassword(prmPassword, clsController.opGetInstance().opGetPasswordUser(prmNickName));
+    public static Boolean opLoginUser(String prmNickName, String prmPassword){
+        try {
+            return clsSecurityUtils.opCheckPassword(prmPassword, clsController.opGetInstance().opGetPasswordUser(prmNickName));
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

@@ -182,7 +182,7 @@ public class uiLogin extends javax.swing.JFrame {
     private void cmdLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLoginActionPerformed
         String varObj = new String(jpfPassword.getPassword());
         if (clsInterfaceBridge.opValidateLogin(jftNickName.getText(), varObj)) {       
-            if (clsInterfaceBridge.opValidateLogin(jftNickName.getText(), varObj)) {
+            if (clsInterfaceBridge.opLoginUser(jftNickName.getText(), varObj)) {
                 JOptionPane.showMessageDialog(null, "Ingreso Exitoso", "Información", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo ingresar", "Advertecia", JOptionPane.WARNING_MESSAGE);
