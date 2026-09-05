@@ -13,7 +13,7 @@
             </test-roots>
         </data>
         <libraries xmlns="http://www.netbeans.org/ns/ant-project-libraries/1">
-            <definitions>pkgLibraries\nblibraries.properties</definitions>
+            <definitions>src/pkgLibraries\nblibraries.properties</definitions>
         </libraries>
     </configuration>
 </project>

@@ -10,8 +10,8 @@ import java.sql.SQLException;
  *
  * @author Acer3
  */
-public class clsBoardDao{
-   
+public class clsBoardDao {
+
     public static void opCreateBoardRole() throws SQLException {
         String sql = "CREATE TABLE IF NOT EXISTS tbl_roles ("
                 + " id_role TEXT PRIMARY KEY,"
@@ -20,7 +20,7 @@ public class clsBoardDao{
                 + ");";
         clsConnectionSQL.opExecuteDDL(sql);
     }
-    
+
     public static void opCreateBoardUser() throws SQLException {
         String sql = "CREATE TABLE IF NOT EXISTS tbl_users ("
                 + " id_user TEXT PRIMARY KEY,"
@@ -34,4 +34,24 @@ public class clsBoardDao{
                 + ");";
         clsConnectionSQL.opExecuteDDL(sql);
     }
+
+    //Edit Questions
+    public static void opCreateBoardQuestion() throws SQLException {
+
+        String sql = "CREATE TABLE IF NOT EXISTS tbl_question ("
+                + "id_question TEXT PRIMARY KEY,"
+                + "question_name TEXT,"
+                + "question_description TEXT,"
+                + "optionA TEXT NOT NULL,"
+                + "optionB TEXT NOT NULL,"
+                + "optionC TEXT NOT NULL,"
+                + "optionD TEXT NOT NULL,"
+                + "rightAnswer TEXT NOT NULL,"
+                + "state TEXT NOT NULL,"
+                + "id_usuario TEXT NOT NULL"
+                + ");";
+
+        clsConnectionSQL.opExecuteDDL(sql);
+    }
+
 }
