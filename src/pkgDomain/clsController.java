@@ -17,6 +17,7 @@ public class clsController {
     private static clsController attInstance;
     private final List<clsUser> attMyUsers = new ArrayList<>();
     private final List<clsRole> attMyRoles = new ArrayList<>();
+    private final List<clsQuestion> attMyQuestions = new ArrayList<>();
     
     /* Builders */
     
@@ -40,6 +41,10 @@ public class clsController {
         return clsBrokerCrud.opGetItemType(prmOUID, attMyRoles);
     }
     
+    public clsQuestion opGetQuestion (String prmOUID){
+        return clsBrokerCrud.opGetItemType(prmOUID, attMyQuestions);
+    }
+    
     /* List Getters */
     public List<clsUser> opGetMyUsers() {
         return attMyUsers;
@@ -47,6 +52,10 @@ public class clsController {
 
     public List<clsRole> opGetMyRoles() {
         return attMyRoles;
+    }
+    
+    public List<clsQuestion> opGetMyQuestions(){
+        return attMyQuestions;
     }
     /* Update */
     
@@ -66,6 +75,17 @@ public class clsController {
         return varObj.opModify(prmName, prmDescription);
     }
     
+    public Boolean opUpdateQuestion (String prmOUID, String prmName, String prmDescription,
+            String prmOptionA, String prmOptionB, String prmOptionC,
+            String prmOptionD, String prmRightAnswer, String prmState, clsUser prmUser)
+    {
+        clsQuestion varObj = opGetQuestion(prmOUID);
+        if (varObj==null) {
+            return false;
+        }
+        return varObj.opModify(prmName, prmDescription, prmOptionA, prmOptionB, prmOptionC, prmOptionD, prmRightAnswer, prmState);
+    }
+    
     /* Associate */
     
     private Boolean opAssociateUser (clsUser prmUser){
@@ -76,6 +96,10 @@ public class clsController {
         return clsBrokerCrud.opAssociateItemTo(prmRole, attMyRoles);
     }
     
+    private Boolean opAssociateQuestion(clsQuestion prmQuestion){
+        return clsBrokerCrud.opAssociateItemTo(prmQuestion, attMyQuestions);
+    }
+    
     /* Disassociate */
     
     private Boolean opDisassociateUser (clsUser prmUser){
@@ -84,6 +108,10 @@ public class clsController {
     
     private Boolean opDisassociateRole (clsRole prmRole){
         return clsBrokerCrud.opDisassociateItemTo(prmRole, attMyRoles);
+    }
+    
+    private Boolean opDisassociateRole (clsQuestion prmQuestion){
+        return clsBrokerCrud.opDisassociateItemTo(prmQuestion, attMyQuestions);
     }
     
     /* Register */
@@ -104,6 +132,16 @@ public class clsController {
         return opAssociateRole(new clsRole(prmOUID, prmName, prmDescription));
     }
     
+    public Boolean opReisterQuestion (String prmOUID, String prmName, String prmDescription,
+            String prmOptionA, String prmOptionB, String prmOptionC,
+            String prmOptionD, String prmRightAnswer, String prmState, clsUser prmUser)
+    {
+        clsQuestion varObj = opGetQuestion(prmOUID);
+        if (varObj!=null) {
+            return false;
+        }
+        return opAssociateQuestion(new clsQuestion(prmOUID, prmName, prmDescription, prmOptionA, prmOptionB, prmOptionC, prmOptionD, prmRightAnswer, prmState, prmUser));
+    }
     
     /* Deletes */
     
@@ -123,6 +161,19 @@ public class clsController {
     public Boolean opDeleteRole (String prmOUID){
         clsRole varObj = opGetRole(prmOUID);
         if (varObj == null) {
+            return false;
+        }
+        if (!varObj.opDie()) {
+            return false;
+        }
+        opDisassociateRole(varObj);
+        varObj = null;
+        return true;
+    }
+    
+    public Boolean opDeleteQuestion (String prmOUID){
+        clsQuestion varObj = opGetQuestion(prmOUID);
+        if (varObj== null) {
             return false;
         }
         if (!varObj.opDie()) {
