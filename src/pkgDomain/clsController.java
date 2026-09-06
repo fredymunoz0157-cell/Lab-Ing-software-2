@@ -213,4 +213,8 @@ public class clsController {
     public String opGetPasswordUser (String prmNickName){
         return opGetUserForNickName(prmNickName).opGetPassword();
     }
+    
+    public clsQuestion opGetQuestionForName (String prmNameQuestion){
+        return clsBrokerCrud.opGetItemForName(prmNameQuestion, attMyQuestions);
+    }
 }

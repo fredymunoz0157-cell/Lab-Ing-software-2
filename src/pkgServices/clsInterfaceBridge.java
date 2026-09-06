@@ -6,7 +6,9 @@ package pkgServices;
 
 import java.util.UUID;
 import pkgDomain.clsController;
+import pkgDomain.clsQuestion;
 import pkgDomain.clsRole;
+import pkgSystem.clsQuestionDao;
 import pkgSystem.clsSecurityUtils;
 import pkgSystem.clsUserDao;
 
@@ -31,7 +33,7 @@ public class clsInterfaceBridge {
     
     public static Boolean opRegisterUser (String prmName, String prmNickName, String prmRole, String prmPassword){
         clsRole varObjRole = clsController.opGetInstance().opGetRoleForName(prmRole);
-        if (varObjRole==null) {
+        if (varObjRole!=null) {
             return false;
         }
         if(!clsUserDao.opSaveUser(UUID.randomUUID().toString(), prmName, "", prmNickName ,varObjRole, true,prmPassword)){
@@ -57,5 +59,18 @@ public class clsInterfaceBridge {
         } catch (Exception e) {
             return false;
         }
+    }
+    
+    public static Boolean opRegisterQuestion(String prmName, String prmQuestion, String prmOptionA,
+            String prmOptionB, String prmOptionC, String prmOptionD, String prmRightAnswer,String prmState, String prmOUIDUser)
+    {
+        clsQuestion varObjQuestion = clsController.opGetInstance().opGetQuestionForName(prmName);
+        if (varObjQuestion!=null) {
+            return false;
+        }
+        if (!clsQuestionDao.opSaveQuestion(UUID.randomUUID().toString(), prmName, "", prmOptionA, prmOptionB, prmOptionC, prmOptionD, prmRightAnswer, prmState, prmOUIDUser)) {
+            return false;
+        }
+        return true;
     }
 }
