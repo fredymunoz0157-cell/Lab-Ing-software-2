@@ -14,15 +14,18 @@ import pkgUI.uiLogin;
  * @author Acer3
  */
 public class clsMain {
+
     public static void main(String[] args) {
         try {
             clsBoardDao.opCreateBoardRole();
             clsBoardDao.opCreateBoardUser();
+            clsBoardDao.opCreateBoardQuestion();
             clsLoadDao.opLoadDatabaseToController();
         } catch (SQLException e) {
-            System.err.println("Error al crear la base de datos"+ e.getMessage());
+            System.err.println("Error al crear la base de datos" + e.getMessage());
         }
+        
         uiLogin varObj = new uiLogin();
-        varObj.setVisible(true);  
+        varObj.setVisible(true);
     }
 }

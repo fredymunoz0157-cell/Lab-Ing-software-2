@@ -132,7 +132,7 @@ public class clsController {
         return opAssociateRole(new clsRole(prmOUID, prmName, prmDescription));
     }
     
-    public Boolean opReisterQuestion (String prmOUID, String prmName, String prmDescription,
+    public Boolean opRegisterQuestion (String prmOUID, String prmName, String prmDescription,
             String prmOptionA, String prmOptionB, String prmOptionC,
             String prmOptionD, String prmRightAnswer, String prmState, clsUser prmUser)
     {
@@ -212,5 +212,9 @@ public class clsController {
     
     public String opGetPasswordUser (String prmNickName){
         return opGetUserForNickName(prmNickName).opGetPassword();
+    }
+    
+    public clsQuestion opGetQuestionForName (String prmNameQuestion){
+        return clsBrokerCrud.opGetItemForName(prmNameQuestion, attMyQuestions);
     }
 }
