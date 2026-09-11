@@ -6,8 +6,8 @@ package pkgDomain;
 
 import java.util.ArrayList;
 import java.util.List;
-import pkgServices.clsBrokerCrud;
-import pkgServices.clsEntity;
+import pkgServices.pkgGlobal.clsBrokerCrud;
+import pkgServices.pkgGlobal.clsEntity;
 
 /**
  *

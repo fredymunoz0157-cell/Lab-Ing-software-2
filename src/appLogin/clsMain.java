@@ -5,8 +5,8 @@
 package appLogin;
 
 import java.sql.SQLException;
-import pkgSystem.clsBoardDao;
-import pkgSystem.clsLoadDao;
+import pkgServices.pkgDataBase.clsBoardDao;
+import pkgServices.pkgDataBase.clsLoadDao;
 import pkgUI.uiLogin;
 
 /**

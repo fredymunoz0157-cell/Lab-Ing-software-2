@@ -69,7 +69,8 @@ public class uiSelectQuestion extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Select a Question:");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgSources/search_70dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png"))); // NOI18N
+        jLabel3.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgSystem/pkgSources/search_70dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png"))); // NOI18N
 
         cmdLoadQuestion.setBackground(new java.awt.Color(204, 204, 204));
         cmdLoadQuestion.setText("Load Question");

@@ -2,16 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package pkgServices;
+package pkgServices.pkgGlobal;
 
+import pkgServices.pkgDataBase.clsQuestionDao;
 import java.util.UUID;
 import pkgDomain.clsController;
 import pkgDomain.clsQuestion;
 import pkgDomain.clsRole;
 import pkgDomain.clsUser;
-import pkgSystem.clsQuestionDao;
-import pkgSystem.clsSecurityUtils;
-import pkgSystem.clsUserDao;
+import pkgServices.pkgDataBase.clsSecurityUtils;
+import pkgServices.pkgDataBase.clsUserDao;
 
 /**
  *

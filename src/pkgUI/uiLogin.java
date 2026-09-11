@@ -6,7 +6,7 @@ package pkgUI;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
 import pkgDomain.clsController;
-import pkgServices.clsInterfaceBridge;
+import pkgServices.pkgGlobal.clsInterfaceBridge;
 
 /**
  *
@@ -72,7 +72,7 @@ public class uiLogin extends javax.swing.JFrame {
         cmdRegisterUser.setPreferredSize(new java.awt.Dimension(100, 40));
         cmdRegisterUser.addActionListener(this::cmdRegisterUserActionPerformed);
 
-        attIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgSources/account_circle_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz241.png"))); // NOI18N
+        attIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgSystem/pkgSources/account_circle_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz241.png"))); // NOI18N
 
         jpInternal.setBackground(new java.awt.Color(255, 255, 255));
         jpInternal.setForeground(new java.awt.Color(255, 255, 255));

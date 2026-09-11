@@ -137,8 +137,11 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="cc" red="cc" type="rgb"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/pkgSources/search_70dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png"/>
+              <Image iconType="3" name="/pkgSystem/pkgSources/search_70dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png"/>
             </Property>
           </Properties>
         </Component>

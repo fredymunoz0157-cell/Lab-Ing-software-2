@@ -7,7 +7,7 @@ package pkgUI;
 import javax.swing.JOptionPane;
 import pkgDomain.clsController;
 import pkgDomain.clsQuestion;
-import pkgServices.clsInterfaceBridge;
+import pkgServices.pkgGlobal.clsInterfaceBridge;
 
 /**
  *

@@ -4,8 +4,8 @@
  */
 package pkgTesting;
 
-import pkgSystem.clsQuestionDao;
-import pkgSystem.clsRoleDao;
+import pkgServices.pkgDataBase.clsQuestionDao;
+import pkgServices.pkgDataBase.clsRoleDao;
 
 /**
  *

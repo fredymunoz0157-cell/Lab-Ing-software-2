@@ -7,7 +7,7 @@ import java.awt.Dimension;
 import java.util.List;
 import javax.swing.JOptionPane;
 import pkgDomain.clsRole;
-import pkgServices.clsInterfaceBridge;
+import pkgServices.pkgGlobal.clsInterfaceBridge;
 /**
  *
  * @author Acer3
@@ -84,7 +84,7 @@ public class uiRegisterUser extends javax.swing.JFrame {
         jpRegisterUser.setBorder(javax.swing.BorderFactory.createTitledBorder("Register User"));
         jpRegisterUser.setPreferredSize(new java.awt.Dimension(400, 600));
 
-        icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgSources/app_registration_200dp_1F1F1F_FILL0_wght400_GRAD0_opsz48.png"))); // NOI18N
+        icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgSystem/pkgSources/app_registration_200dp_1F1F1F_FILL0_wght400_GRAD0_opsz48.png"))); // NOI18N
 
         jpInternal.setBackground(new java.awt.Color(255, 255, 255));
 

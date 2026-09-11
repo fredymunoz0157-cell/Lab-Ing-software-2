@@ -4,7 +4,7 @@
  */
 package pkgDomain;
 
-import pkgServices.clsEntity;
+import pkgServices.pkgGlobal.clsEntity;
 
 /**
  *

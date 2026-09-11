@@ -155,7 +155,7 @@
         <Component class="javax.swing.JLabel" name="attIcon">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/pkgSources/account_circle_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz241.png"/>
+              <Image iconType="3" name="/pkgSystem/pkgSources/account_circle_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz241.png"/>
             </Property>
           </Properties>
         </Component>
