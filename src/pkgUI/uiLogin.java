@@ -186,6 +186,7 @@ public class uiLogin extends javax.swing.JFrame {
                 if(clsInterfaceBridge.opShowUIQuestions()){
                     this.setVisible(false);
                     attSelectQuestion.setVisible(true);
+                    attSelectQuestion.opLoadComboBox(clsController.opGetInstance().opGetMyQuestions());
                 }else{
                     JOptionPane.showMessageDialog(null, "Ingreso Exitoso", "Información", JOptionPane.INFORMATION_MESSAGE);
                 }

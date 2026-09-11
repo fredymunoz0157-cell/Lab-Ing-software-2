@@ -4,6 +4,11 @@
  */
 package pkgUI;
 
+import java.util.List;
+import javax.swing.JOptionPane;
+import pkgDomain.clsController;
+import pkgDomain.clsQuestion;
+
 /**
  *
  * @author santi
@@ -11,12 +16,22 @@ package pkgUI;
 public class uiSelectQuestion extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(uiSelectQuestion.class.getName());
-
+    private final uiQuestion attQuestion = new uiQuestion();
     /**
      * Creates new form uiSelectQuestion
      */
     public uiSelectQuestion() {
         initComponents();
+        this.setLocationRelativeTo(null);
+    }
+    
+    public void opLoadComboBox(List<clsQuestion> prmList) {
+        jcbSelectQuestion.removeAllItems(); // Limpia los elementos previos
+        if (prmList != null) {
+            for (clsQuestion varObj : prmList) {
+                jcbSelectQuestion.addItem(varObj.opGetName());
+            }
+        }
     }
 
     /**
@@ -34,6 +49,7 @@ public class uiSelectQuestion extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         cmdLoadQuestion = new javax.swing.JButton();
+        cmdCloseApp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("uiSelectQuestion");
@@ -48,19 +64,23 @@ public class uiSelectQuestion extends javax.swing.JFrame {
         jcbSelectQuestion.setPreferredSize(new java.awt.Dimension(72, 40));
         jcbSelectQuestion.addActionListener(this::jcbSelectQuestionActionPerformed);
 
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Question");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Select a Question:");
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgSources/search_70dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png"))); // NOI18N
 
         cmdLoadQuestion.setBackground(new java.awt.Color(204, 204, 204));
-        cmdLoadQuestion.setForeground(new java.awt.Color(0, 0, 0));
         cmdLoadQuestion.setText("Load Question");
         cmdLoadQuestion.setPreferredSize(new java.awt.Dimension(100, 40));
+        cmdLoadQuestion.addActionListener(this::cmdLoadQuestionActionPerformed);
+
+        cmdCloseApp.setBackground(new java.awt.Color(204, 204, 204));
+        cmdCloseApp.setText("Close");
+        cmdCloseApp.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cmdCloseApp.setPreferredSize(new java.awt.Dimension(100, 40));
+        cmdCloseApp.addActionListener(this::cmdCloseAppActionPerformed);
 
         javax.swing.GroupLayout jpSelectQuestionLayout = new javax.swing.GroupLayout(jpSelectQuestion);
         jpSelectQuestion.setLayout(jpSelectQuestionLayout);
@@ -75,15 +95,18 @@ public class uiSelectQuestion extends javax.swing.JFrame {
                         .addComponent(jcbSelectQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpSelectQuestionLayout.createSequentialGroup()
                         .addGap(203, 203, 203)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpSelectQuestionLayout.createSequentialGroup()
-                        .addGap(182, 182, 182)
-                        .addComponent(cmdLoadQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(113, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpSelectQuestionLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(159, 159, 159))
+            .addGroup(jpSelectQuestionLayout.createSequentialGroup()
+                .addGap(182, 182, 182)
+                .addComponent(cmdLoadQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cmdCloseApp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
         );
         jpSelectQuestionLayout.setVerticalGroup(
             jpSelectQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,8 +119,10 @@ public class uiSelectQuestion extends javax.swing.JFrame {
                 .addGroup(jpSelectQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jcbSelectQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addGap(39, 39, 39)
-                .addComponent(cmdLoadQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addGroup(jpSelectQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmdLoadQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmdCloseApp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
 
@@ -109,6 +134,22 @@ public class uiSelectQuestion extends javax.swing.JFrame {
     private void jcbSelectQuestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbSelectQuestionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbSelectQuestionActionPerformed
+
+    private void cmdCloseAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCloseAppActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_cmdCloseAppActionPerformed
+
+    private void cmdLoadQuestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLoadQuestionActionPerformed
+        String varSelect= jcbSelectQuestion.getSelectedItem().toString();
+        if(varSelect!=""){
+            clsQuestion varObj = clsController.opGetInstance().opGetQuestionForName(varSelect);
+            if (varObj!=null) {
+                attQuestion.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(null, "Verifique la seleccion", "Advertecia", JOptionPane.WARNING_MESSAGE);
+            } 
+        }
+    }//GEN-LAST:event_cmdLoadQuestionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,6 +177,7 @@ public class uiSelectQuestion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cmdCloseApp;
     private javax.swing.JButton cmdLoadQuestion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

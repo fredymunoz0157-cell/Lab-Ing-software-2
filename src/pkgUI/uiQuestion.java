@@ -17,7 +17,10 @@ public class uiQuestion extends javax.swing.JFrame {
      */
     public uiQuestion() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,30 +57,25 @@ public class uiQuestion extends javax.swing.JFrame {
         Lbl8 = new javax.swing.JLabel();
         Lbl9 = new javax.swing.JLabel();
         Lbl10 = new javax.swing.JLabel();
+        cmdCloseApp = new javax.swing.JButton();
 
         jTextField2.setText("jTextField2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Question"));
         jPanel2.setPreferredSize(new java.awt.Dimension(450, 800));
 
-        IconQuestionM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/pkgSources/question_mark_70dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png"))); // NOI18N
-
-        Lbl3.setForeground(new java.awt.Color(0, 0, 0));
         Lbl3.setText("Question:");
 
-        Lbl4.setForeground(new java.awt.Color(0, 0, 0));
         Lbl4.setText("Option A:");
 
-        Lbl5.setForeground(new java.awt.Color(0, 0, 0));
         Lbl5.setText("Right Answer:");
 
-        Lbl6.setForeground(new java.awt.Color(0, 0, 0));
         Lbl6.setText("State:");
 
-        Lbl7.setForeground(new java.awt.Color(0, 0, 0));
         Lbl7.setText("New State:");
 
         jcbQuestionState.setBackground(new java.awt.Color(204, 204, 204));
@@ -85,53 +83,44 @@ public class uiQuestion extends javax.swing.JFrame {
         jcbQuestionState.addActionListener(this::jcbQuestionStateActionPerformed);
 
         cmdQuestionUpdate.setBackground(new java.awt.Color(204, 204, 204));
-        cmdQuestionUpdate.setForeground(new java.awt.Color(0, 0, 0));
         cmdQuestionUpdate.setText("Update State");
         cmdQuestionUpdate.setPreferredSize(new java.awt.Dimension(100, 40));
         cmdQuestionUpdate.addActionListener(this::cmdQuestionUpdateActionPerformed);
 
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("ID:");
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Name:");
 
         jtfQuestionId.setBackground(new java.awt.Color(204, 204, 204));
-        jtfQuestionId.setForeground(new java.awt.Color(0, 0, 0));
 
         jtfQuestionName.setBackground(new java.awt.Color(204, 204, 204));
-        jtfQuestionName.setForeground(new java.awt.Color(0, 0, 0));
 
         jtfQuestionTxt.setBackground(new java.awt.Color(204, 204, 204));
-        jtfQuestionTxt.setForeground(new java.awt.Color(0, 0, 0));
 
         jtfQuestionOptionA.setBackground(new java.awt.Color(204, 204, 204));
-        jtfQuestionOptionA.setForeground(new java.awt.Color(0, 0, 0));
 
         jtfQuestionRightAnswer.setBackground(new java.awt.Color(204, 204, 204));
-        jtfQuestionRightAnswer.setForeground(new java.awt.Color(0, 0, 0));
 
         jtfQuestionState.setBackground(new java.awt.Color(204, 204, 204));
-        jtfQuestionState.setForeground(new java.awt.Color(0, 0, 0));
 
         jtfQuestionOptionB.setBackground(new java.awt.Color(204, 204, 204));
-        jtfQuestionOptionB.setForeground(new java.awt.Color(0, 0, 0));
         jtfQuestionOptionB.addActionListener(this::jtfQuestionOptionBActionPerformed);
 
         jtfQuestionOptionC.setBackground(new java.awt.Color(204, 204, 204));
-        jtfQuestionOptionC.setForeground(new java.awt.Color(0, 0, 0));
 
         jtfQuestionOptionD.setBackground(new java.awt.Color(204, 204, 204));
-        jtfQuestionOptionD.setForeground(new java.awt.Color(0, 0, 0));
 
-        Lbl8.setForeground(new java.awt.Color(0, 0, 0));
         Lbl8.setText("Option B:");
 
-        Lbl9.setForeground(new java.awt.Color(0, 0, 0));
         Lbl9.setText("Option C:");
 
-        Lbl10.setForeground(new java.awt.Color(0, 0, 0));
         Lbl10.setText("Option D:");
+
+        cmdCloseApp.setBackground(new java.awt.Color(204, 204, 204));
+        cmdCloseApp.setText("Close");
+        cmdCloseApp.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cmdCloseApp.setPreferredSize(new java.awt.Dimension(100, 40));
+        cmdCloseApp.addActionListener(this::cmdCloseAppActionPerformed);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -142,17 +131,16 @@ public class uiQuestion extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator1)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Lbl5)
-                                    .addComponent(Lbl6))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Lbl7)
-                                .addGap(67, 67, 67)
-                                .addComponent(jcbQuestionState, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 52, Short.MAX_VALUE))
-                            .addComponent(jSeparator1)))
+                                    .addComponent(Lbl6)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(Lbl7)
+                                        .addGap(67, 67, 67)
+                                        .addComponent(jcbQuestionState, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 47, Short.MAX_VALUE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jtfQuestionState, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -200,7 +188,9 @@ public class uiQuestion extends javax.swing.JFrame {
                         .addGap(95, 95, 95))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(cmdQuestionUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(160, 160, 160))))
+                        .addGap(41, 41, 41)
+                        .addComponent(cmdCloseApp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,8 +245,10 @@ public class uiQuestion extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Lbl7)
                     .addComponent(jcbQuestionState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addComponent(cmdQuestionUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmdQuestionUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmdCloseApp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18))
         );
 
@@ -276,6 +268,10 @@ public class uiQuestion extends javax.swing.JFrame {
     private void jtfQuestionOptionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfQuestionOptionBActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfQuestionOptionBActionPerformed
+
+    private void cmdCloseAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCloseAppActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_cmdCloseAppActionPerformed
 
     /**
      * @param args the command line arguments
@@ -312,6 +308,7 @@ public class uiQuestion extends javax.swing.JFrame {
     private javax.swing.JLabel Lbl7;
     private javax.swing.JLabel Lbl8;
     private javax.swing.JLabel Lbl9;
+    private javax.swing.JButton cmdCloseApp;
     private javax.swing.JButton cmdQuestionUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
