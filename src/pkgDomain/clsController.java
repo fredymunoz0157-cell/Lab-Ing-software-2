@@ -10,4 +10,15 @@ package pkgDomain;
  */
 public class clsController {
     
+    private static clsController attInstance;
+    
+    private clsController() {
+    }
+    
+    public static clsController opGetInstance() {
+        if (attInstance == null) {
+            attInstance = new clsController();
+        }
+        return attInstance;
+    }
 }
