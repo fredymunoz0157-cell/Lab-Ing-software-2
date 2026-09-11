@@ -73,6 +73,7 @@ public class uiSelectQuestion extends javax.swing.JFrame {
 
         cmdLoadQuestion.setBackground(new java.awt.Color(204, 204, 204));
         cmdLoadQuestion.setText("Load Question");
+        cmdLoadQuestion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         cmdLoadQuestion.setPreferredSize(new java.awt.Dimension(100, 40));
         cmdLoadQuestion.addActionListener(this::cmdLoadQuestionActionPerformed);
 
@@ -123,7 +124,7 @@ public class uiSelectQuestion extends javax.swing.JFrame {
                 .addGroup(jpSelectQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdLoadQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmdCloseApp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         getContentPane().add(jpSelectQuestion, java.awt.BorderLayout.CENTER);

@@ -81,17 +81,26 @@ public class clsInterfaceBridge {
         return true;
     }
     
-    public static Boolean opUpdateQuestion(String prmName, String prmQuestion, String prmOptionA,
-            String prmOptionB, String prmOptionC, String prmOptionD, String prmRightAnswer, String prmState, String prmOUIDUser) 
+    public static Boolean opUpdateQuestion(
+            String prmIdQuestion,
+            String prmQuestionName,
+            String prmQuestionDescription,
+            String prmOptionA,
+            String prmOptionB,
+            String prmOptionC,
+            String prmOptionD,
+            String prmRightAnswer,
+            String prmState,
+            String prmIdUsuario)
     {
-        clsQuestion varObjQuestion = clsController.opGetInstance().opGetQuestionForName(prmName);
+        clsQuestion varObjQuestion = clsController.opGetInstance().opGetQuestionForName(prmQuestionName);
         if (varObjQuestion == null) {
             return false;
         }
-        if (!clsQuestionDao.opUpdateQuestion(prmQuestion, prmQuestion, prmQuestion, prmOptionA, prmOptionB, prmOptionC, prmOptionD, prmRightAnswer, prmState, prmOUIDUser)) {
+        if (!clsQuestionDao.opUpdateQuestion(prmIdQuestion, prmQuestionName, prmQuestionDescription, prmOptionA, prmOptionB, prmOptionC, prmOptionD, prmRightAnswer, prmState, prmIdUsuario)) {
           return false;
         }
-        varObjQuestion.opModify(prmName, prmQuestion, prmOptionA, prmOptionB, prmOptionC, prmOptionD, prmRightAnswer, prmState);
+        varObjQuestion.opModify(prmQuestionName, prmQuestionDescription, prmOptionA, prmOptionB, prmOptionC, prmOptionD, prmRightAnswer, prmState);
         return true;
     }
     
