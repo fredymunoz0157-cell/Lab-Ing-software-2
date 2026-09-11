@@ -5,7 +5,7 @@
 package pkgUI;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
-import pkgDomain.clsController;
+import pkgDomain.clsControllerDomain;
 import pkgServices.pkgGlobal.clsInterfaceBridge;
 
 /**
@@ -175,7 +175,7 @@ public class uiLogin extends javax.swing.JFrame {
     private void cmdRegisterUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdRegisterUserActionPerformed
         attUiRegisterUser.setVisible(true);
         attUiRegisterUser.opSetUiLogin(this);
-        attUiRegisterUser.opLoadComboBox(clsController.opGetInstance().opGetMyRoles());
+        attUiRegisterUser.opLoadComboBox(clsControllerDomain.opGetInstance().opGetMyRoles());
         this.setVisible(false);
     }//GEN-LAST:event_cmdRegisterUserActionPerformed
 
@@ -186,7 +186,7 @@ public class uiLogin extends javax.swing.JFrame {
                 if(clsInterfaceBridge.opShowUIQuestions()){
                     this.setVisible(false);
                     attSelectQuestion.setVisible(true);
-                    attSelectQuestion.opLoadComboBox(clsController.opGetInstance().opGetMyQuestions());
+                    attSelectQuestion.opLoadComboBox(clsControllerDomain.opGetInstance().opGetMyQuestions());
                 }else{
                     JOptionPane.showMessageDialog(null, "Ingreso Exitoso", "Información", JOptionPane.INFORMATION_MESSAGE);
                 }

@@ -6,7 +6,7 @@ package pkgServices.pkgGlobal;
 
 import pkgServices.pkgDataBase.clsQuestionDao;
 import java.util.UUID;
-import pkgDomain.clsController;
+import pkgDomain.clsControllerDomain;
 import pkgDomain.clsQuestion;
 import pkgDomain.clsRole;
 import pkgDomain.clsUser;
@@ -33,7 +33,7 @@ public class clsInterfaceBridge {
     }
     
     public static Boolean opRegisterUser (String prmName, String prmNickName, String prmRole, String prmPassword){
-        clsRole varObjRole = clsController.opGetInstance().opGetRoleForName(prmRole);
+        clsRole varObjRole = clsControllerDomain.opGetInstance().opGetRoleForName(prmRole);
         if (varObjRole!=null) {
             return false;
         }
@@ -56,9 +56,9 @@ public class clsInterfaceBridge {
     
     public static Boolean opLoginUser(String prmNickName, String prmPassword){
         try {
-            clsUser varObj = clsController.opGetInstance().opGetUserForNickName(prmNickName);
+            clsUser varObj = clsControllerDomain.opGetInstance().opGetUserForNickName(prmNickName);
             if (varObj!=null) {
-                clsController.opGetInstance().opUpdateUserLogin(varObj);
+                clsControllerDomain.opGetInstance().opUpdateUserLogin(varObj);
                 return clsSecurityUtils.opCheckPassword(prmPassword, varObj.opGetPassword());
             }
             return false;
@@ -70,14 +70,14 @@ public class clsInterfaceBridge {
     public static Boolean opRegisterQuestion(String prmName, String prmQuestion, String prmOptionA,
             String prmOptionB, String prmOptionC, String prmOptionD, String prmRightAnswer,String prmState, String prmOUIDUser)
     {
-        clsQuestion varObjQuestion = clsController.opGetInstance().opGetQuestionForName(prmName);
+        clsQuestion varObjQuestion = clsControllerDomain.opGetInstance().opGetQuestionForName(prmName);
         if (varObjQuestion!=null) {
             return false;
         }
         if (!clsQuestionDao.opSaveQuestion(UUID.randomUUID().toString(), prmName, "", prmOptionA, prmOptionB, prmOptionC, prmOptionD, prmRightAnswer, prmState, prmOUIDUser)) {
             return false;
         }
-        clsController.opGetInstance().opRegisterQuestion(prmOUIDUser, prmName, prmQuestion, prmOptionA, prmOptionB, prmOptionC, prmOptionD, prmRightAnswer, prmState, clsController.opGetInstance().opGetUserLogin());
+        clsControllerDomain.opGetInstance().opRegisterQuestion(prmOUIDUser, prmName, prmQuestion, prmOptionA, prmOptionB, prmOptionC, prmOptionD, prmRightAnswer, prmState, clsControllerDomain.opGetInstance().opGetUserLogin());
         return true;
     }
     
@@ -93,7 +93,7 @@ public class clsInterfaceBridge {
             String prmState,
             String prmIdUsuario)
     {
-        clsQuestion varObjQuestion = clsController.opGetInstance().opGetQuestionForName(prmQuestionName);
+        clsQuestion varObjQuestion = clsControllerDomain.opGetInstance().opGetQuestionForName(prmQuestionName);
         if (varObjQuestion == null) {
             return false;
         }
@@ -105,7 +105,7 @@ public class clsInterfaceBridge {
     }
     
     public static Boolean opShowUIQuestions (){
-        String varRole = clsController.opGetInstance().opGetRoleUserLogin();
+        String varRole = clsControllerDomain.opGetInstance().opGetRoleUserLogin();
         if(varRole.equalsIgnoreCase("Administrador")||
                 varRole.equalsIgnoreCase("Autor de preguntas")||
                 varRole.equalsIgnoreCase("Revisor"))

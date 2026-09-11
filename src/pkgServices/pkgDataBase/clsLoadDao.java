@@ -7,7 +7,7 @@ package pkgServices.pkgDataBase;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import pkgDomain.clsController;
+import pkgDomain.clsControllerDomain;
 import pkgDomain.clsRole;
 import pkgDomain.clsUser;
 
@@ -29,7 +29,7 @@ public class clsLoadDao {
         }
 
         // Obtener la instancia Singleton de tu controlador
-        clsController controller = clsController.opGetInstance();
+        clsControllerDomain controller = clsControllerDomain.opGetInstance();
 
         // Limpiar registros existentes antes de cargar los datos de la BD
         controller.opGetMyUsers().clear();

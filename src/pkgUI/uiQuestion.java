@@ -5,7 +5,7 @@
 package pkgUI;
 
 import javax.swing.JOptionPane;
-import pkgDomain.clsController;
+import pkgDomain.clsControllerDomain;
 import pkgDomain.clsQuestion;
 import pkgServices.pkgGlobal.clsInterfaceBridge;
 
@@ -103,7 +103,6 @@ public class uiQuestion extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(500, 600));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Question"));
@@ -237,7 +236,7 @@ public class uiQuestion extends javax.swing.JFrame {
                     .addComponent(Lbl9)
                     .addComponent(jtfQuestionOptionC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jtfQuestionOptionD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Lbl10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -271,7 +270,7 @@ public class uiQuestion extends javax.swing.JFrame {
 
     private void cmdQuestionUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdQuestionUpdateActionPerformed
         
-        if (clsInterfaceBridge.opUpdateQuestion(jtfQuestionId.getText(),jtfQuestionName.getText(), jtfQuestionTxt.getText(), jtfQuestionOptionA.getText(), jtfQuestionOptionB.getText(), jtfQuestionOptionC.getText(), jtfQuestionOptionD.getText(), jtfQuestionRightAnswer.getText(), jcbQuestionState.getSelectedItem().toString(), clsController.opGetInstance().opGetUserLogin().opGetOUID())) {
+        if (clsInterfaceBridge.opUpdateQuestion(jtfQuestionId.getText(),jtfQuestionName.getText(), jtfQuestionTxt.getText(), jtfQuestionOptionA.getText(), jtfQuestionOptionB.getText(), jtfQuestionOptionC.getText(), jtfQuestionOptionD.getText(), jtfQuestionRightAnswer.getText(), jcbQuestionState.getSelectedItem().toString(), clsControllerDomain.opGetInstance().opGetUserLogin().opGetOUID())) {
             JOptionPane.showMessageDialog(null, "Actualizacion Exitosa", "Información", JOptionPane.INFORMATION_MESSAGE);
             opLoadUI();
         } else {

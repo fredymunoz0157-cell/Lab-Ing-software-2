@@ -8,7 +8,7 @@ import pkgServices.pkgDataBase.clsConnectionSQL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import pkgDomain.clsController;
+import pkgDomain.clsControllerDomain;
 
 /**
  *
@@ -31,7 +31,7 @@ public class clsRoleDao {
 
                 // Si se guardó en la BD, lo registramos en el Controlador en memoria
                 if (affectedRows > 0) {
-                    return clsController.opGetInstance().opRegisterRole(prmOUID, prmName, prmDescription);
+                    return clsControllerDomain.opGetInstance().opRegisterRole(prmOUID, prmName, prmDescription);
                 }
             }
         } catch (SQLException e) {

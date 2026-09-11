@@ -6,7 +6,7 @@ package pkgUI;
 
 import java.util.List;
 import javax.swing.JOptionPane;
-import pkgDomain.clsController;
+import pkgDomain.clsControllerDomain;
 import pkgDomain.clsQuestion;
 
 /**
@@ -144,7 +144,7 @@ public class uiSelectQuestion extends javax.swing.JFrame {
     private void cmdLoadQuestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLoadQuestionActionPerformed
         String varSelect= jcbSelectQuestion.getSelectedItem().toString();
         if(varSelect!=""){
-            clsQuestion varObj = clsController.opGetInstance().opGetQuestionForName(varSelect);
+            clsQuestion varObj = clsControllerDomain.opGetInstance().opGetQuestionForName(varSelect);
             if (varObj!=null) {
                 attQuestion.setVisible(true);
                 attQuestion.opUpdateQuestion(varObj);

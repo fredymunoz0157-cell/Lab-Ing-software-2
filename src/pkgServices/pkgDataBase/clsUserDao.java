@@ -8,7 +8,7 @@ import pkgServices.pkgDataBase.clsConnectionSQL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import pkgDomain.clsController;
+import pkgDomain.clsControllerDomain;
 import pkgDomain.clsRole;
 
 /**
@@ -49,10 +49,10 @@ public class clsUserDao {
 
                 if (affectedRows > 0) {
                     // Se registra el usuario en el controlador guardando el hash
-                    clsController.opGetInstance().opRegisterUser(prmOUID, prmName, prmDescription, prmNickName, prmRole, prmAsset, hashedPassword);
+                    clsControllerDomain.opGetInstance().opRegisterUser(prmOUID, prmName, prmDescription, prmNickName, prmRole, prmAsset, hashedPassword);
 
                     if (prmRole != null) {
-                        return clsController.opGetInstance().opRegisterUserInRole(prmOUID, prmRole.opGetOUID());
+                        return clsControllerDomain.opGetInstance().opRegisterUserInRole(prmOUID, prmRole.opGetOUID());
                     }
                     return true;
                 }

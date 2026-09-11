@@ -4,7 +4,7 @@
  */
 package pkgTesting;
 
-import pkgDomain.clsController;
+import pkgDomain.clsControllerDomain;
 import pkgDomain.clsQuestion;
 import pkgDomain.clsRole;
 import pkgDomain.clsUser;
@@ -15,13 +15,13 @@ import pkgDomain.clsUser;
  */
 public class uTestController {
     public static void main(String[] args) {
-        for (clsRole varObj : clsController.opGetInstance().opGetMyRoles()) {
+        for (clsRole varObj : clsControllerDomain.opGetInstance().opGetMyRoles()) {
             System.out.println("" + varObj.opGetName());
         }
-        for (clsUser varObj : clsController.opGetInstance().opGetMyUsers()) {
+        for (clsUser varObj : clsControllerDomain.opGetInstance().opGetMyUsers()) {
             System.out.println("codigo "+varObj.opGetOUID() + " Nombre " + varObj.opGetName());
         }
-        for (clsQuestion varObj : clsController.opGetInstance().opGetMyQuestions()) {
+        for (clsQuestion varObj : clsControllerDomain.opGetInstance().opGetMyQuestions()) {
             System.out.println("" + varObj.opGetName());
         }
     }
