@@ -16,7 +16,7 @@ public class uiLogin extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(uiLogin.class.getName());
     private final uiRegisterUser attUiRegisterUser = new uiRegisterUser();
-    
+    private final uiSelectQuestion attSelectQuestion = new uiSelectQuestion();
     /**
      * Creates new form uiLogin
      */
@@ -183,7 +183,12 @@ public class uiLogin extends javax.swing.JFrame {
         String varObj = new String(jpfPassword.getPassword());
         if (clsInterfaceBridge.opValidateLogin(jftNickName.getText(), varObj)) {       
             if (clsInterfaceBridge.opLoginUser(jftNickName.getText(), varObj)) {
-                JOptionPane.showMessageDialog(null, "Ingreso Exitoso", "Información", JOptionPane.INFORMATION_MESSAGE);
+                if(clsInterfaceBridge.opShowUIQuestions()){
+                    this.setVisible(false);
+                    attSelectQuestion.setVisible(true);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Ingreso Exitoso", "Información", JOptionPane.INFORMATION_MESSAGE);
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo ingresar", "Advertecia", JOptionPane.WARNING_MESSAGE);
             }

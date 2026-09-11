@@ -8,6 +8,7 @@ import java.util.UUID;
 import pkgDomain.clsController;
 import pkgDomain.clsQuestion;
 import pkgDomain.clsRole;
+import pkgDomain.clsUser;
 import pkgSystem.clsQuestionDao;
 import pkgSystem.clsSecurityUtils;
 import pkgSystem.clsUserDao;
@@ -55,7 +56,12 @@ public class clsInterfaceBridge {
     
     public static Boolean opLoginUser(String prmNickName, String prmPassword){
         try {
-            return clsSecurityUtils.opCheckPassword(prmPassword, clsController.opGetInstance().opGetPasswordUser(prmNickName));
+            clsUser varObj = clsController.opGetInstance().opGetUserForNickName(prmNickName);
+            if (varObj!=null) {
+                clsController.opGetInstance().opUpdateUserLogin(varObj);
+                return clsSecurityUtils.opCheckPassword(prmPassword, varObj.opGetPassword());
+            }
+            return false;
         } catch (Exception e) {
             return false;
         }
@@ -71,6 +77,32 @@ public class clsInterfaceBridge {
         if (!clsQuestionDao.opSaveQuestion(UUID.randomUUID().toString(), prmName, "", prmOptionA, prmOptionB, prmOptionC, prmOptionD, prmRightAnswer, prmState, prmOUIDUser)) {
             return false;
         }
+        clsController.opGetInstance().opRegisterQuestion(prmOUIDUser, prmName, prmQuestion, prmOptionA, prmOptionB, prmOptionC, prmOptionD, prmRightAnswer, prmState, clsController.opGetInstance().opGetUserLogin());
         return true;
+    }
+    
+    public static Boolean opUpdateQuestion(String prmName, String prmQuestion, String prmOptionA,
+            String prmOptionB, String prmOptionC, String prmOptionD, String prmRightAnswer, String prmState, String prmOUIDUser) 
+    {
+        clsQuestion varObjQuestion = clsController.opGetInstance().opGetQuestionForName(prmName);
+        if (varObjQuestion == null) {
+            return false;
+        }
+        if (!clsQuestionDao.opUpdateQuestion(prmQuestion, prmQuestion, prmQuestion, prmOptionA, prmOptionB, prmOptionC, prmOptionD, prmRightAnswer, prmState, prmOUIDUser)) {
+          return false;
+        }
+        varObjQuestion.opModify(prmName, prmQuestion, prmOptionA, prmOptionB, prmOptionC, prmOptionD, prmRightAnswer, prmState);
+        return true;
+    }
+    
+    public static Boolean opShowUIQuestions (){
+        String varRole = clsController.opGetInstance().opGetRoleUserLogin();
+        if(varRole.equalsIgnoreCase("Administrador")||
+                varRole.equalsIgnoreCase("Autor de preguntas")||
+                varRole.equalsIgnoreCase("Revisor"))
+        {
+            return true;
+        }
+        return false;
     }
 }

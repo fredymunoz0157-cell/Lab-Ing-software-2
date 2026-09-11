@@ -4,7 +4,6 @@
  */
 package pkgSystem;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -60,6 +59,68 @@ public class clsQuestionDao {
         } catch (SQLException e) {
             System.err.println(
                     "Error al guardar la pregunta en BD: "
+                    + e.getMessage()
+            );
+
+        } finally {
+            clsConnectionSQL.opCloseConnection(con);
+        }
+
+        return false;
+    }
+
+    public static Boolean opUpdateQuestion(
+            String prmIdQuestion,
+            String prmQuestionName,
+            String prmQuestionDescription,
+            String prmOptionA,
+            String prmOptionB,
+            String prmOptionC,
+            String prmOptionD,
+            String prmRightAnswer,
+            String prmState,
+            String prmIdUsuario) {
+
+        String sql = "UPDATE tbl_question SET "
+                + "question_name = ?, "
+                + "question_description = ?, "
+                + "optionA = ?, "
+                + "optionB = ?, "
+                + "optionC = ?, "
+                + "optionD = ?, "
+                + "rightAnswer = ?, "
+                + "state = ?, "
+                + "id_usuario = ? "
+                + "WHERE id_question = ?;";
+
+        Connection con = null;
+
+        try {
+            con = clsConnectionSQL.opGetConnection();
+
+            try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+
+                pstmt.setString(1, prmQuestionName);
+                pstmt.setString(2, prmQuestionDescription);
+                pstmt.setString(3, prmOptionA);
+                pstmt.setString(4, prmOptionB);
+                pstmt.setString(5, prmOptionC);
+                pstmt.setString(6, prmOptionD);
+                pstmt.setString(7, prmRightAnswer);
+                pstmt.setString(8, prmState);
+                pstmt.setString(9, prmIdUsuario);
+                pstmt.setString(10, prmIdQuestion); // El ID va al final para la cláusula WHERE
+
+                int affectedRows = pstmt.executeUpdate();
+
+                if (affectedRows > 0) {
+                    return true;
+                }
+            }
+
+        } catch (SQLException e) {
+            System.err.println(
+                    "Error al actualizar la pregunta en BD: "
                     + e.getMessage()
             );
 
