@@ -5,9 +5,6 @@
 package appLogin;
 
 import java.sql.SQLException;
-import pkgDomain.clsController;
-import pkgDomain.clsRole;
-import pkgDomain.clsUser;
 import pkgSystem.clsBoardDao;
 import pkgSystem.clsLoadDao;
 import pkgUI.uiLogin;
@@ -28,6 +25,7 @@ public class clsMain {
             System.err.println("Error al crear la base de datos" + e.getMessage());
         }
         uiLogin varObj = new uiLogin();
+        
         varObj.setVisible(true);
     }
 }

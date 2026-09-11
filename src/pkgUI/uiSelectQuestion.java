@@ -145,6 +145,8 @@ public class uiSelectQuestion extends javax.swing.JFrame {
             clsQuestion varObj = clsController.opGetInstance().opGetQuestionForName(varSelect);
             if (varObj!=null) {
                 attQuestion.setVisible(true);
+                attQuestion.opUpdateQuestion(varObj);
+                attQuestion.opLoadUI();
             }else{
                 JOptionPane.showMessageDialog(null, "Verifique la seleccion", "Advertecia", JOptionPane.WARNING_MESSAGE);
             } 

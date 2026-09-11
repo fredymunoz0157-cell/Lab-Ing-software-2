@@ -37,6 +37,34 @@ public class clsQuestion extends clsEntity {
         attUser = prmUser;
     }
     
+    public String opGetOptionA() {
+        return attOptionA;
+    }
+
+    public String opGetOptionB() {
+        return attOptionB;
+    }
+
+    public String opGetOptionC() {
+        return attOptionC;
+    }
+
+    public String opGetOptionD() {
+        return attOptionD;
+    }
+
+    public String opGetRightAnswer() {
+        return attRightAnswer;
+    }
+
+    public String opGetState() {
+        return attState;
+    }
+
+    public clsUser opGetUser() {
+        return attUser;
+    }
+    
     public Boolean opDie() {
         if (attUser != null) {
             return false;
