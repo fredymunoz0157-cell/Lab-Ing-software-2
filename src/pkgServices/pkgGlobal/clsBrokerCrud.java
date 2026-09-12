@@ -5,6 +5,8 @@
 package pkgServices.pkgGlobal;
 
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import pkgDomain.clsUser;
 
 /**
@@ -12,16 +14,19 @@ import pkgDomain.clsUser;
  * @author Acer3
  */
 public final class clsBrokerCrud {
+
     public interface IIdentificable<T> {
+
         T opGetOUID();
     }
-    
-    public interface IIdentificableName<T>{
+
+    public interface IIdentificableName<T> {
+
         T opGetName();
     }
 
-    public static <OUIDType extends Comparable<OUIDType>, ItemType extends IIdentificable<OUIDType>> 
-    ItemType opGetItemType(OUIDType prmOUID, List<ItemType> prmCollection) {
+    public static <OUIDType extends Comparable<OUIDType>, ItemType extends IIdentificable<OUIDType>>
+            ItemType opGetItemType(OUIDType prmOUID, List<ItemType> prmCollection) {
         if (prmCollection != null) {
             for (ItemType varObj : prmCollection) {
                 if (varObj.opGetOUID().compareTo(prmOUID) == 0) {
@@ -29,7 +34,7 @@ public final class clsBrokerCrud {
                 }
             }
         }
-        return null; 
+        return null;
     }
 
     public static <ItemType> boolean opAssociateItemTo(ItemType prmItem, List<ItemType> prmCollection) {
@@ -41,26 +46,26 @@ public final class clsBrokerCrud {
         prmCollection.remove(prmItem);
         return true;
     }
-    
-    public static <OUIDType extends Comparable<OUIDType>, ItemType extends IIdentificableName<OUIDType>>ItemType 
-    opGetItemForName(OUIDType prmName, List<ItemType> prmCollection) {
+
+    public static <OUIDType extends Comparable<OUIDType>, ItemType extends IIdentificableName<OUIDType>> ItemType
+            opGetItemForName(OUIDType prmName, List<ItemType> prmCollection) {
 
         for (ItemType varObj : prmCollection) {
             if (varObj.opGetName().compareTo(prmName) == 0) {
                 return varObj;
             }
         }
-        return null; 
+        return null;
     }
-    
+
     public static clsUser opGetUserByNickname(String prmNickName, List<clsUser> prmCollection) {
-    if (prmNickName != null && prmCollection != null) {
-        for (clsUser varUser : prmCollection) {
-            if (varUser.opGetNickName() != null && varUser.opGetNickName().equalsIgnoreCase(prmNickName.trim())) {
-                return varUser;
+        if (prmNickName != null && prmCollection != null) {
+            for (clsUser varUser : prmCollection) {
+                if (varUser.opGetNickName() != null && varUser.opGetNickName().equalsIgnoreCase(prmNickName.trim())) {
+                    return varUser;
+                }
             }
         }
+        return null;
     }
-    return null;
-}
 }

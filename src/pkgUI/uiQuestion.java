@@ -5,9 +5,9 @@
 package pkgUI;
 
 import javax.swing.JOptionPane;
+import pkgDomain.clsController;
 import pkgDomain.clsControllerDomain;
 import pkgDomain.clsQuestion;
-import pkgServices.pkgGlobal.clsInterfaceBridge;
 
 /**
  *
@@ -17,6 +17,7 @@ public class uiQuestion extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(uiQuestion.class.getName());
     private clsQuestion attQuestion = new clsQuestion();
+    private final clsController attFacade = clsController.opGetInstance();
     /**
      * Creates new form uiQuestion
      */
@@ -270,7 +271,7 @@ public class uiQuestion extends javax.swing.JFrame {
 
     private void cmdQuestionUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdQuestionUpdateActionPerformed
         
-        if (clsInterfaceBridge.opUpdateQuestion(jtfQuestionId.getText(),jtfQuestionName.getText(), jtfQuestionTxt.getText(), jtfQuestionOptionA.getText(), jtfQuestionOptionB.getText(), jtfQuestionOptionC.getText(), jtfQuestionOptionD.getText(), jtfQuestionRightAnswer.getText(), jcbQuestionState.getSelectedItem().toString(), clsControllerDomain.opGetInstance().opGetUserLogin().opGetOUID())) {
+        if (attFacade.opUpdateQuestion(jtfQuestionId.getText(),jtfQuestionName.getText(), jtfQuestionTxt.getText(), jtfQuestionOptionA.getText(), jtfQuestionOptionB.getText(), jtfQuestionOptionC.getText(), jtfQuestionOptionD.getText(), jtfQuestionRightAnswer.getText(), jcbQuestionState.getSelectedItem().toString(), clsController.opGetInstance().opGetUserLogin().opGetOUID())) {
             JOptionPane.showMessageDialog(null, "Actualizacion Exitosa", "Información", JOptionPane.INFORMATION_MESSAGE);
             opLoadUI();
         } else {

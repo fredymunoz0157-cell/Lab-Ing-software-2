@@ -7,7 +7,7 @@ import java.awt.Dimension;
 import java.util.List;
 import javax.swing.JOptionPane;
 import pkgDomain.clsRole;
-import pkgServices.pkgGlobal.clsInterfaceBridge;
+import pkgDomain.clsController;
 /**
  *
  * @author Acer3
@@ -16,7 +16,7 @@ public class uiRegisterUser extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(uiRegisterUser.class.getName());
     private uiLogin attUiLogin;
-    
+    private final clsController attFacade = clsController.opGetInstance();
     /**
      * Creates new form uiRegisterUser
      */
@@ -232,8 +232,8 @@ public class uiRegisterUser extends javax.swing.JFrame {
     }//GEN-LAST:event_cmdBackActionPerformed
 
     private void cmdRegisterUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdRegisterUserActionPerformed
-        if ( clsInterfaceBridge.opValidateRegister(jtfUserName.getText(), jtfUserNickName.getText(), jtfUserPassword.getText())) {
-            if (clsInterfaceBridge.opRegisterUser(jtfUserName.getText(), jtfUserNickName.getText(), jcbUserRole.getSelectedItem().toString(), jtfUserPassword.getText())) {
+        if ( attFacade.opValidateRegister(jtfUserName.getText(), jtfUserNickName.getText(), jtfUserPassword.getText())) {
+            if (attFacade.opRegisterUser(jtfUserName.getText(), jtfUserNickName.getText(), jcbUserRole.getSelectedItem().toString(), jtfUserPassword.getText())) {
                 JOptionPane.showMessageDialog(null, "Registro Exitoso", "Información", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo registrar", "Advertecia", JOptionPane.WARNING_MESSAGE);

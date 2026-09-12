@@ -5,8 +5,8 @@
 package pkgUI;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
+import pkgDomain.clsController;
 import pkgDomain.clsControllerDomain;
-import pkgServices.pkgGlobal.clsInterfaceBridge;
 
 /**
  *
@@ -17,6 +17,7 @@ public class uiLogin extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(uiLogin.class.getName());
     private final uiRegisterUser attUiRegisterUser = new uiRegisterUser();
     private final uiSelectQuestion attSelectQuestion = new uiSelectQuestion();
+    private final clsController attFacade = clsController.opGetInstance();
     /**
      * Creates new form uiLogin
      */
@@ -181,9 +182,9 @@ public class uiLogin extends javax.swing.JFrame {
 
     private void cmdLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLoginActionPerformed
         String varObj = new String(jpfPassword.getPassword());
-        if (clsInterfaceBridge.opValidateLogin(jftNickName.getText(), varObj)) {       
-            if (clsInterfaceBridge.opLoginUser(jftNickName.getText(), varObj)) {
-                if(clsInterfaceBridge.opShowUIQuestions()){
+        if (attFacade.opValidateLogin(jftNickName.getText(), varObj)) {       
+            if (attFacade.opLoginUser(jftNickName.getText(), varObj)) {
+                if(attFacade.opShowUIQuestions()){
                     this.setVisible(false);
                     attSelectQuestion.setVisible(true);
                     attSelectQuestion.opLoadComboBox(clsControllerDomain.opGetInstance().opGetMyQuestions());

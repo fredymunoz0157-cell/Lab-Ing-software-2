@@ -18,7 +18,6 @@ public class clsControllerDomain {
     private final List<clsUser> attMyUsers = new ArrayList<>();
     private final List<clsRole> attMyRoles = new ArrayList<>();
     private final List<clsQuestion> attMyQuestions = new ArrayList<>();
-    private clsUser attUserLogin = new clsUser();
     
     /* Builders */
     
@@ -33,14 +32,6 @@ public class clsControllerDomain {
     }
       
     /* Getters */
-    
-    public clsUser opGetUserLogin(){
-        return attUserLogin;
-    }
-    
-    public String opGetRoleUserLogin(){
-        return attUserLogin.opGetRole().opGetName();
-    }
     
     public clsUser opGetUser(String prmOUID){
         return clsBrokerCrud.opGetItemType(prmOUID, attMyUsers);
@@ -67,10 +58,6 @@ public class clsControllerDomain {
         return attMyQuestions;
     }
     /* Update */
-    
-    public void opUpdateUserLogin(clsUser prmUser){
-        attUserLogin = prmUser;
-    }
     
     public Boolean opUpdateUser(String prmOUID, String prmName, String prmDescription, String prmNickName, clsRole prmRole, Boolean prmAsset, String prmPassword){
         clsUser varObj = opGetUser(prmOUID);

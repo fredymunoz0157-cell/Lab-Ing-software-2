@@ -4,9 +4,7 @@
  */
 package appLogin;
 
-import java.sql.SQLException;
-import pkgServices.pkgDataBase.clsBoardDao;
-import pkgServices.pkgDataBase.clsLoadDao;
+import pkgDomain.clsController;
 import pkgUI.uiLogin;
 
 /**
@@ -16,16 +14,8 @@ import pkgUI.uiLogin;
 public class clsMain {
 
     public static void main(String[] args) {
-        try {
-            clsBoardDao.opCreateBoardRole();
-            clsBoardDao.opCreateBoardUser();
-            clsBoardDao.opCreateBoardQuestion();
-            clsLoadDao.opLoadDatabaseToController();
-        } catch (SQLException e) {
-            System.err.println("Error al crear la base de datos" + e.getMessage());
-        }
+        clsController.opGetInstance().opRaedy();
         uiLogin varObj = new uiLogin();
-        
         varObj.setVisible(true);
     }
 }
