@@ -13,11 +13,15 @@ import pkgServices.pkgDataBase.clsQuestionDao;
 import pkgServices.pkgDataBase.clsRoleDao;
 import pkgServices.pkgDataBase.clsUserDao;
 import pkgServices.pkgMicrokernel.clsQuestionMicrokernel;
+import pkgServices.pkgPipeline.clsFilterOption;
+import pkgServices.pkgPipeline.clsFilterOptionDuplicate;
+import pkgServices.pkgPipeline.clsFilterOptionFormat;
 import pkgServices.pkgPipeline.clsFilterQuestion;
 import pkgServices.pkgPipeline.clsFilterQuestionBelongsList;
 import pkgServices.pkgPipeline.clsFilterQuestionFormat;
 import pkgServices.pkgPipeline.clsFilterQuestionSize;
 import pkgServices.pkgPipeline.clsPipelineQuestion;
+import pkgServices.pkgPipeline.clsPipelineQuestionOption;
 
 /**
  *
@@ -58,6 +62,9 @@ public class uTestServices {
 //    }
         
     public static void main(String[] args) {
+        String ROJO = "\u001B[31m";
+        String VERDE = "\u001B[32m";
+        String RESET = "\u001B[0m";
 
         System.out.println("====================================");
         System.out.println(" PATRÓN Micro-Kernel");
@@ -86,8 +93,11 @@ public class uTestServices {
         System.out.println();
 
         ArrayList<String> varList = new ArrayList<>();
+        varList.add("OPCION_MULTIPLE");
+        varList.add("Caso");
+        varList.add("Multimedia");
         int varInt = 5;
-        clsQuestion preguntaPrueba = new clsQuestion(
+        clsQuestion varObj = new clsQuestion(
                 "Q-1001",
                 "Historia de la Informática",
                 "¿Quién es considerada la primera programadora de la historia?",
@@ -95,28 +105,98 @@ public class uTestServices {
                 "Ada Lovelace",
                 "Grace Hopper",
                 "Margaret Hamilton",
-                "B",
+                "Ada Lovelace",
                 "ACTIVO",
                 "OPCION_MULTIPLE",
                 "/assets/images/preguntas/ada_lovelace.png",
                 varUser
         );
-        
 
-        System.out.println("Test Belongs List");
-        clsFilterQuestion varBelongs = new clsFilterQuestionBelongsList(varList);
-        
-        
-        System.out.println("Test Siize");
+        System.out.println("====================================");
+        System.out.println(" creando los filtros pregunta");
+        System.out.println("====================================");
+
         clsFilterQuestion varSize = new clsFilterQuestionSize(varInt);
-
-        System.out.println("Test Format");
         clsFilterQuestion varFormat = new clsFilterQuestionFormat();
-        //clsPipelineQuestion varPipelineQuesiton = new clsPipelineQuestion<>(List.of(varFormat, varSize));
-        
-        
+        clsFilterQuestion varBelongs = new clsFilterQuestionBelongsList(varList);
 
-        
+        clsPipelineQuestion varPipelineQuesiton = new clsPipelineQuestion(List.of(varFormat, varSize));
+
+        System.out.println("====================================");
+        System.out.println(" creando los filtros de las opciones");
+        System.out.println("====================================");
+
+        clsFilterOption varOptionFormat = new clsFilterOptionFormat();
+        clsFilterOption varOptionDuplFilterOption = new clsFilterOptionDuplicate();
+
+        clsPipelineQuestionOption varPipelineOption = new clsPipelineQuestionOption(List.of(varOptionFormat, varOptionDuplFilterOption));
+
+        System.out.println("====================================");
+        System.out.println(" ejecutando los filtros de pregunta");
+        System.out.println("====================================");
+
+        Boolean varBool = varPipelineQuesiton.opExecuteFilters(varObj.opGetDescription());
+        if (varBool) {
+            System.out.println("====================================");
+            System.out.println(VERDE+" PASO LOS FILTROS"+RESET);
+            System.out.println("====================================");
+        } else {
+            System.out.println("====================================");
+            System.out.println(ROJO+" NO PASO LOS FILTROS"+RESET);
+            System.out.println("====================================");
+        }
+
+        System.out.println("====================================");
+        System.out.println(" ejecutando los filtros de las opciones ");
+        System.out.println("====================================");
+
+        Boolean varBoolOption = varPipelineOption.opExecuteFilters(varObj.opGetOptionA(), varObj.opGetOptionB(), varObj.opGetOptionC(), varObj.opGetOptionD());
+
+        if (varBoolOption) {
+            System.out.println("====================================");
+            System.out.println(VERDE+" PASO LOS FILTROS"+RESET);
+            System.out.println("====================================");
+        } else {
+            System.out.println("====================================");
+            System.out.println(ROJO+" NO PASO LOS FILTROS"+RESET);
+            System.out.println("====================================");
+        }
+
+        System.out.println("====================================");
+        System.out.println(" ejecutando los filtros competencia ");
+        System.out.println("====================================");
+
+        varPipelineQuesiton = new clsPipelineQuestion(List.of(varBelongs));
+
+        Boolean varBoolCompetence = varPipelineQuesiton.opExecuteFilters(varObj.opGetType());
+
+        if (varBoolCompetence) {
+            System.out.println("====================================");
+            System.out.println(VERDE+" PASO LOS FILTROS"+RESET);
+            System.out.println("====================================");
+        } else {
+            System.out.println("====================================");
+            System.out.println(ROJO+" NO PASO LOS FILTROS"+RESET);
+            System.out.println("====================================");
+        }
+
+        System.out.println("====================================");
+        System.out.println(" ejecutando los filtros respuesta ");
+        System.out.println("====================================");
+
+        varBelongs = new clsFilterQuestionBelongsList(List.of(varObj.opGetOptionA(), varObj.opGetOptionB(), varObj.opGetOptionC(), varObj.opGetOptionD()));
+        varPipelineQuesiton = new clsPipelineQuestion(List.of(varBelongs));
+        Boolean varBoolAnswer = varPipelineQuesiton.opExecuteFilters(varObj.opGetRightAnswer());
+
+        if (varBoolAnswer) {
+            System.out.println("====================================");
+            System.out.println(VERDE+" PASO LOS FILTROS"+RESET);
+            System.out.println("====================================");
+        } else {
+            System.out.println("====================================");
+            System.out.println(ROJO+" NO PASO LOS FILTROS"+RESET);
+            System.out.println("====================================");
+        }
 
     }
 ;

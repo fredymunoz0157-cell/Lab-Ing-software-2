@@ -20,7 +20,7 @@ public class clsPipelineQuestion {
     
     public boolean opExecuteFilters(String prmInput){
         for(clsFilterQuestion varObject: attQuestionFilter){
-            if(varObject.opExecute(prmInput)){
+            if(!varObject.opExecute(prmInput)){
                 return false;
             }
             
