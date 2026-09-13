@@ -13,7 +13,7 @@ import pkgServices.pkgDataBase.clsUserDao;
  *
  * @author Acer3
  */
-public class uTestSystem {
+public class uTestServices {
 
     public static void main(String[] args) {
 // 1. Rol: Administrador
