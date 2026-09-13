@@ -70,7 +70,7 @@ public class clsController {
 
     public Boolean opRegisterUser(String prmName, String prmNickName, String prmRole, String prmPassword) {
         clsRole varObjRole = clsControllerDomain.opGetInstance().opGetRoleForName(prmRole);
-        if (varObjRole != null) {
+        if (varObjRole == null) {
             return false;
         }
         if (!clsUserDao.opSaveUser(UUID.randomUUID().toString(), prmName, "", prmNickName, varObjRole, true, prmPassword)) {
