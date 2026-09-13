@@ -11,14 +11,14 @@ import pkgDomain.clsUser;
  *
  * @author Acer3
  */
-public class clsMultipleChoiceQuestion implements IQuestionPlugin{
+public class clsCaseQuestion implements IQuestionPlugin{
 
-    public clsMultipleChoiceQuestion() {
+    public clsCaseQuestion() {
     }
     
     @Override
     public String opGetOUID(){
-        return "SELECCION_MULTIPLE";
+        return "TIPO_CASO";
     }
     
     @Override

@@ -11,18 +11,18 @@ import pkgDomain.clsUser;
  *
  * @author Acer3
  */
-public class clsMultipleChoiceQuestion implements IQuestionPlugin{
+public class clsMultimediaQuestion implements IQuestionPlugin{
 
-    public clsMultipleChoiceQuestion() {
+    public clsMultimediaQuestion() {
     }
     
     @Override
     public String opGetOUID(){
-        return "SELECCION_MULTIPLE";
+        return "MULTIMEDIA";
     }
     
     @Override
     public clsQuestion opCreateQuestion(String prmOUID, String prmName, String prmDescription,String prmOptionA, String prmOptionB, String prmOptionC, String prmOptionD, String prmRightAnswer, String prmState,String prmType, String prmPathImagen, clsUser prmUser){
-        return new clsQuestion(prmOUID, prmName, prmDescription, prmOptionA, prmOptionB, prmOptionC, prmOptionD, prmRightAnswer, prmState,prmType, "", prmUser);
+        return new clsQuestion(prmOUID, prmName, prmDescription, prmOptionA, prmOptionB, prmOptionC, prmOptionD, prmRightAnswer, prmState,prmType, prmPathImagen, prmUser);
     }
 }
