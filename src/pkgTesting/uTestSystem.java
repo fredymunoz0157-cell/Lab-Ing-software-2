@@ -4,8 +4,10 @@
  */
 package pkgTesting;
 
+import pkgDomain.clsController;
 import pkgServices.pkgDataBase.clsQuestionDao;
 import pkgServices.pkgDataBase.clsRoleDao;
+import pkgServices.pkgDataBase.clsUserDao;
 
 /**
  *
@@ -39,7 +41,9 @@ public class uTestSystem {
                 "Ley de Gauss", // prmOptionD
                 "B", // prmRightAnswer
                 "ACTIVA", // prmState
-                "51412c00-91f7-454e-a6c9-aff7c1c44dd6" // prmIdUsuario (admin test)
+                "51412c00-91f7-454e-a6c9-aff7c1c44dd6",
+                "",
+                ""// prmIdUsuario (admin test)
         );
     }
 }

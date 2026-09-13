@@ -4,7 +4,7 @@
  */
 package pkgServices.pkgDataBase;
 
-import pkgServices.pkgDataBase.clsConnectionSQL;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -25,12 +25,15 @@ public class clsQuestionDao {
             String prmOptionD,
             String prmRightAnswer,
             String prmState,
+            String prmType,
+            String prmPathImagen,
             String prmIdUsuario) {
 
+        // Se cambió 'type' por 'type_question' en el INSERT
         String sql = "INSERT INTO tbl_question "
                 + "(id_question, question_name, question_description, "
-                + "optionA, optionB, optionC, optionD, rightAnswer, state, id_usuario) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                + "optionA, optionB, optionC, optionD, rightAnswer, state, type_question, path_imagen, id_usuario) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         Connection con = null;
 
@@ -48,7 +51,9 @@ public class clsQuestionDao {
                 pstmt.setString(7, prmOptionD);
                 pstmt.setString(8, prmRightAnswer);
                 pstmt.setString(9, prmState);
-                pstmt.setString(10, prmIdUsuario);
+                pstmt.setString(10, prmType);
+                pstmt.setString(11, prmPathImagen);
+                pstmt.setString(12, prmIdUsuario);
 
                 int affectedRows = pstmt.executeUpdate();
 
@@ -80,8 +85,11 @@ public class clsQuestionDao {
             String prmOptionD,
             String prmRightAnswer,
             String prmState,
+            String prmType,
+            String prmPathImagen,
             String prmIdUsuario) {
 
+        // Se cambió 'type' por 'type_question' en el UPDATE
         String sql = "UPDATE tbl_question SET "
                 + "question_name = ?, "
                 + "question_description = ?, "
@@ -91,6 +99,8 @@ public class clsQuestionDao {
                 + "optionD = ?, "
                 + "rightAnswer = ?, "
                 + "state = ?, "
+                + "type_question = ?, "
+                + "path_imagen = ?, "
                 + "id_usuario = ? "
                 + "WHERE id_question = ?;";
 
@@ -109,8 +119,10 @@ public class clsQuestionDao {
                 pstmt.setString(6, prmOptionD);
                 pstmt.setString(7, prmRightAnswer);
                 pstmt.setString(8, prmState);
-                pstmt.setString(9, prmIdUsuario);
-                pstmt.setString(10, prmIdQuestion); // El ID va al final para la cláusula WHERE
+                pstmt.setString(9, prmType);
+                pstmt.setString(10, prmPathImagen);
+                pstmt.setString(11, prmIdUsuario);
+                pstmt.setString(12, prmIdQuestion);
 
                 int affectedRows = pstmt.executeUpdate();
 

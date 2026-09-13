@@ -77,13 +77,13 @@ public class clsControllerDomain {
     
     public Boolean opUpdateQuestion (String prmOUID, String prmName, String prmDescription,
             String prmOptionA, String prmOptionB, String prmOptionC,
-            String prmOptionD, String prmRightAnswer, String prmState, clsUser prmUser)
+            String prmOptionD, String prmRightAnswer, String prmState, String prmType, String prmPathImagen)
     {
         clsQuestion varObj = opGetQuestion(prmOUID);
         if (varObj==null) {
             return false;
         }
-        return varObj.opModify(prmName, prmDescription, prmOptionA, prmOptionB, prmOptionC, prmOptionD, prmRightAnswer, prmState);
+        return varObj.opModify(prmName, prmDescription, prmOptionA, prmOptionB, prmOptionC, prmOptionD, prmRightAnswer, prmState, prmType, prmPathImagen);
     }
     
     /* Associate */
@@ -134,13 +134,14 @@ public class clsControllerDomain {
     
     public Boolean opRegisterQuestion (String prmOUID, String prmName, String prmDescription,
             String prmOptionA, String prmOptionB, String prmOptionC,
-            String prmOptionD, String prmRightAnswer, String prmState, clsUser prmUser)
+            String prmOptionD, String prmRightAnswer, String prmState, 
+            String prmType, String prmPathImagen, clsUser prmUser)
     {
         clsQuestion varObj = opGetQuestion(prmOUID);
         if (varObj!=null) {
             return false;
         }
-        return opAssociateQuestion(new clsQuestion(prmOUID, prmName, prmDescription, prmOptionA, prmOptionB, prmOptionC, prmOptionD, prmRightAnswer, prmState, prmUser));
+        return opAssociateQuestion(new clsQuestion(prmOUID, prmName, prmDescription, prmOptionA, prmOptionB, prmOptionC, prmOptionD, prmRightAnswer, prmState, prmType, prmPathImagen, prmUser));
     }
     
     /* Deletes */

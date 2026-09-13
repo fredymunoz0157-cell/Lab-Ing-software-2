@@ -271,7 +271,7 @@ public class uiQuestion extends javax.swing.JFrame {
 
     private void cmdQuestionUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdQuestionUpdateActionPerformed
         
-        if (attFacade.opUpdateQuestion(jtfQuestionId.getText(),jtfQuestionName.getText(), jtfQuestionTxt.getText(), jtfQuestionOptionA.getText(), jtfQuestionOptionB.getText(), jtfQuestionOptionC.getText(), jtfQuestionOptionD.getText(), jtfQuestionRightAnswer.getText(), jcbQuestionState.getSelectedItem().toString(), clsController.opGetInstance().opGetUserLogin().opGetOUID())) {
+        if (attFacade.opUpdateQuestion(jtfQuestionId.getText(),jtfQuestionName.getText(), jtfQuestionTxt.getText(), jtfQuestionOptionA.getText(), jtfQuestionOptionB.getText(), jtfQuestionOptionC.getText(), jtfQuestionOptionD.getText(), jtfQuestionRightAnswer.getText(), jcbQuestionState.getSelectedItem().toString(),"", "")) {
             JOptionPane.showMessageDialog(null, "Actualizacion Exitosa", "Información", JOptionPane.INFORMATION_MESSAGE);
             opLoadUI();
         } else {

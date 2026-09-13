@@ -18,6 +18,8 @@ public class clsQuestion extends clsEntity {
     private String attOptionD;
     private String attRightAnswer;
     private String attState;
+    private String attType;
+    private String attPathImagen;
     private clsUser attUser;
 
     public clsQuestion() {
@@ -26,7 +28,8 @@ public class clsQuestion extends clsEntity {
 
     public clsQuestion(String prmOUID, String prmName, String prmDescription,
             String prmOptionA, String prmOptionB, String prmOptionC,
-            String prmOptionD, String prmRightAnswer, String prmState, clsUser prmUser) {
+            String prmOptionD, String prmRightAnswer, String prmState, 
+            String prmType, String prmPathImagen, clsUser prmUser) {
         super(prmOUID, prmName, prmDescription);
         attOptionA = prmOptionA;
         attOptionB = prmOptionB;
@@ -34,6 +37,8 @@ public class clsQuestion extends clsEntity {
         attOptionD = prmOptionD;
         attRightAnswer = prmRightAnswer;
         attState = prmState;
+        attType= prmType;
+        attPathImagen=prmPathImagen;
         attUser = prmUser;
     }
     
@@ -60,6 +65,14 @@ public class clsQuestion extends clsEntity {
     public String opGetState() {
         return attState;
     }
+    
+    public String opGetType (){
+        return attType;
+    }
+    
+    public String opGetPathImagen(){
+        return attPathImagen;
+    }
 
     public clsUser opGetUser() {
         return attUser;
@@ -71,10 +84,10 @@ public class clsQuestion extends clsEntity {
         }
         return true;
     }
-    public Boolean opModify(String prmName, String prmDescription, 
-                                    String prmOptionA, String prmOptionB, 
-                                    String prmOptionC, String prmOptionD, 
-                                    String prmRightAnswer, String prmState) {
+    public Boolean opModify(String prmName, String prmDescription,
+            String prmOptionA, String prmOptionB, String prmOptionC,
+            String prmOptionD, String prmRightAnswer, String prmState, 
+            String prmType, String prmPathImagen) {
         super.opModify(prmName, prmDescription);
         attOptionA = prmOptionA;
         attOptionB = prmOptionB;
@@ -82,6 +95,8 @@ public class clsQuestion extends clsEntity {
         attOptionD = prmOptionD;
         attRightAnswer = prmRightAnswer;
         attState = prmState;
+        attType = prmType;
+        attPathImagen = prmPathImagen;
         return true;
     }
 }

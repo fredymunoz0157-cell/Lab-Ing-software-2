@@ -4,6 +4,7 @@
  */
 package pkgTesting;
 
+import pkgDomain.clsController;
 import pkgDomain.clsControllerDomain;
 import pkgDomain.clsQuestion;
 import pkgDomain.clsRole;

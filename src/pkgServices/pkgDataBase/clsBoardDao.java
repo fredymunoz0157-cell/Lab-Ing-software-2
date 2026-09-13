@@ -38,6 +38,7 @@ public class clsBoardDao {
     //Edit Questions
     public static void opCreateBoardQuestion() throws SQLException {
 
+        // Se agregaron las columnas type_question y path_imagen
         String sql = "CREATE TABLE IF NOT EXISTS tbl_question ("
                 + "id_question TEXT PRIMARY KEY,"
                 + "question_name TEXT,"
@@ -48,6 +49,8 @@ public class clsBoardDao {
                 + "optionD TEXT NOT NULL,"
                 + "rightAnswer TEXT NOT NULL,"
                 + "state TEXT NOT NULL,"
+                + "type_question TEXT,"
+                + "path_imagen TEXT,"
                 + "id_usuario TEXT NOT NULL"
                 + ");";
 

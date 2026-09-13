@@ -103,15 +103,15 @@ public class clsController {
         }
     }
 
-    public Boolean opRegisterQuestion(String prmName, String prmQuestion, String prmOptionA, String prmOptionB, String prmOptionC, String prmOptionD, String prmRightAnswer, String prmState, String prmOUIDUser) {
+    public Boolean opRegisterQuestion(String prmName, String prmQuestion, String prmOptionA, String prmOptionB, String prmOptionC, String prmOptionD, String prmRightAnswer, String prmState,String prmType, String prmPathImagen, String prmOUIDUser) {
         clsQuestion varObjQuestion = clsControllerDomain.opGetInstance().opGetQuestionForName(prmName);
         if (varObjQuestion != null) {
             return false;
         }
-        if (!clsQuestionDao.opSaveQuestion(UUID.randomUUID().toString(), prmName, "", prmOptionA, prmOptionB, prmOptionC, prmOptionD, prmRightAnswer, prmState, prmOUIDUser)) {
+        if (!clsQuestionDao.opSaveQuestion(UUID.randomUUID().toString(), prmName, "", prmOptionA, prmOptionB, prmOptionC, prmOptionD, prmRightAnswer, prmState, prmType, prmPathImagen,prmOUIDUser)) {
             return false;
         }
-        clsControllerDomain.opGetInstance().opRegisterQuestion(prmOUIDUser, prmName, prmQuestion, prmOptionA, prmOptionB, prmOptionC, prmOptionD, prmRightAnswer, prmState, attUserLogin);
+        clsControllerDomain.opGetInstance().opRegisterQuestion(prmOUIDUser, prmName, prmQuestion, prmOptionA, prmOptionB, prmOptionC, prmOptionD, prmRightAnswer, prmState, prmType, prmPathImagen,attUserLogin);
         return true;
     }
 
@@ -125,16 +125,17 @@ public class clsController {
             String prmOptionD,
             String prmRightAnswer,
             String prmState,
-            String prmIdUsuario
+            String prmType,
+            String prmPathImagen
     ) {
         clsQuestion varObjQuestion = clsControllerDomain.opGetInstance().opGetQuestionForName(prmQuestionName);
         if (varObjQuestion == null) {
             return false;
         }
-        if (!clsQuestionDao.opUpdateQuestion(prmIdQuestion, prmQuestionName, prmQuestionDescription, prmOptionA, prmOptionB, prmOptionC, prmOptionD, prmRightAnswer, prmState, prmIdUsuario)) {
+        if (!clsQuestionDao.opUpdateQuestion(prmIdQuestion, prmQuestionName, prmQuestionDescription, prmOptionA, prmOptionB, prmOptionC, prmOptionD, prmRightAnswer, prmState, prmType, prmPathImagen,attUserLogin.opGetOUID())) {
             return false;
         }
-        varObjQuestion.opModify(prmQuestionName, prmQuestionDescription, prmOptionA, prmOptionB, prmOptionC, prmOptionD, prmRightAnswer, prmState);
+        varObjQuestion.opModify(prmQuestionName, prmQuestionDescription, prmOptionA, prmOptionB, prmOptionC, prmOptionD, prmRightAnswer, prmState, prmType, prmPathImagen);
         return true;
     }
 
