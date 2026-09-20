@@ -14,7 +14,6 @@ import pkgUI.uiLogin;
  * @author Acer3
  */
 public class clsMain {
-
     public static void main(String[] args) {
         clsController.opGetInstance().opRaedy();
         uiLogin varObj = new uiLogin();
