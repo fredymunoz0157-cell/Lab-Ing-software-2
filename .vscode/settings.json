@@ -1,0 +1,7 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "src/pkgSystem/pkgLibraries/jbcrypt-0.4.jar",
+        "src/pkgSystem/pkgLibraries/sqlite-jdbc-3.36.0.3.jar"
+    ]
+}
