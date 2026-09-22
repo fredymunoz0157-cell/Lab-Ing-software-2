@@ -1,10 +1,10 @@
-package com.unicauca.microservicio_crud;
+package com.unicauca.microservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MicroservicioCrudApplicationTests {
+class MicroserviceApplicationTests {
 
 	@Test
 	void contextLoads() {
