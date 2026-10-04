@@ -9,5 +9,6 @@ public class App {
         clsController.opGetInstance().opReady();
         uiLogin varObj = new uiLogin();
         varObj.setVisible(true);
+        //test
     }
 }
