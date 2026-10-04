@@ -1,0 +1,12 @@
+# Compilados
+bin/
+out/
+*.class
+
+# Base de datos local (se crea sola al ejecutar la app)
+data/*.db
+
+# IDE
+.idea/
+nbproject/private/
+*.iml
